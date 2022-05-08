@@ -35,6 +35,16 @@ class LeadViewSet(viewsets.ModelViewSet): #this is a way to write better code. W
         return self.queryset.filter(team=team)
 
 
+@api_view(['POST'])
+def delete_lead(request,lead_id):
+    team = Team.objects.filter(members__in=[request.user]).first() #checking if self.request.user is in members
+
+    lead = team.leads.filter(pk=lead_id) #same as get_object
+    lead.delete()
+
+    return Response({'message':'The lead was deleted'})
+
+
 class LeadView(APIView): 
     def get(self,request,format=None):
         leads = Lead.objects.all()
