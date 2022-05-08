@@ -51,7 +51,7 @@
 
                                 <td>{{ lead.status }}</td>
                                 <td>
-                                    <router-link :to="{name:'Lead',params:{id:lead.id}}">Details</router-link>
+                                    <router-link :to="{ name: 'Lead', params: { id: lead.id }}">Details</router-link>
                                 </td>   
                             
                         </tr>
